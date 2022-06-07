@@ -8,5 +8,6 @@ tools also uses another tool called maigret to perform option [2] so you get
 better results for the username you are searching for.
 
 ## INSTALL
-```git clone https://github.com/RetroPackets/Fugitive
+```
+git clone https://github.com/RetroPackets/Fugitive
 python3 fugitive.py
