@@ -10,4 +10,5 @@ better results for the username you are searching for.
 ## INSTALL
 ```
 git clone https://github.com/RetroPackets/Fugitive
+cd Fugitive
 python3 fugitive.py
