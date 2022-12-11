@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+infoga.egg-info/PKG-INFO
+infoga.egg-info/SOURCES.txt
+infoga.egg-info/dependency_links.txt
+infoga.egg-info/requires.txt
+infoga.egg-info/top_level.txt
