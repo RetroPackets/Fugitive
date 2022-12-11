@@ -9,7 +9,6 @@ git clone https://github.com/RetroPackets/Fugitive
 cd Fugitive
 python3 fugitive.py
 ```
-![image info](./img/display.png)
 ![Fugitive - Disaplay](/img/display.png "Fugitive Terminal Display")
 
 [The Developer Does not and will never be responsible for witch way users decide to use this resourceful tool]
