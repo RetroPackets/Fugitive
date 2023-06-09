@@ -114,13 +114,15 @@ def option8():
      os.system("cd Xurma-Dox && pip install -r requirements.txt && python3 xurma-dox.py")
 
 def option9():
-     os.system("clear")
-     print(f'{Fore.WHITE}Loading {Fore.YELLOW}[{Fore.CYAN}GEO-Recon{Fore.YELLOW}]{Fore.WHITE}...')
-     time.sleep(5)
-     os.system("pip3 install colorama requests")
-     os.system("clear")
-     entry = input(f"{Fore.WHITE}Enter IP Address{Fore.YELLOW}:{Fore.CYAN} ")
-     os.system("cd geo-recon && chmod +x geo-recon.py && pip install -r requirements.txt && python3 geo-recon.py " + entry)
+    os.system("clear")
+    print(f'{Fore.WHITE}Loading {Fore.YELLOW}[{Fore.CYAN}GEO-Recon{Fore.YELLOW}]{Fore.WHITE}...')
+    time.sleep(5)
+    os.system("pip3 install colorama requests")
+    os.system("clear")
+    entry = input(f"{Fore.WHITE}Enter IP Address{Fore.YELLOW}:{Fore.CYAN} ")
+    os.system(
+        f"cd geo-recon && chmod +x geo-recon.py && pip install -r requirements.txt && python3 geo-recon.py {entry}"
+    )
 
 
 def option10():

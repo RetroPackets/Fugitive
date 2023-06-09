@@ -20,10 +20,10 @@ def check(syA1):
     }
 
     response = requests.request(method='GET', url=url, headers=headers, params=querystring)
- 
+
     # Formatted output
     decodedResponse = json.loads(response.text)
-    print ( Fore.WHITE + "Domain: " + json.dumps(decodedResponse ["data"]["domain"]))
+    print(f"{Fore.WHITE}Domain: " + json.dumps(decodedResponse ["data"]["domain"]))
     print ( "Hostname: " + json.dumps(decodedResponse ["data"]["hostnames"]))
     print ( "Usage Type: " + json.dumps(decodedResponse ["data"]["usageType"]))
     print ( "Confidence of Abuse: " + json.dumps(decodedResponse ["data"]["abuseConfidenceScore"]))
@@ -33,13 +33,20 @@ def check(syA1):
 
     #This conditional statement outputs the status of the ip address based on abuse of confidence
     if json.dumps(decodedResponse ["data"]["abuseConfidenceScore"]) == "100":
-        print ( Fore.YELLOW + "The IP Address " + sys.argv[1] + " Is Malicious and well known for SSH Bruteforce Attacks" + "\n")
+        print(
+            f"{Fore.YELLOW}The IP Address {sys.argv[1]} Is Malicious and well known for SSH Bruteforce Attacks"
+            + "\n"
+        )
     elif json.dumps(decodedResponse ["data"]["abuseConfidenceScore"]) == "0":
-        print ( Fore.GREEN + "The IP Address " + sys.argv[1] + " Is Not Malicious" + "\n")
+        print(f"{Fore.GREEN}The IP Address {sys.argv[1]} Is Not Malicious" + "\n")
     elif json.dumps(decodedResponse ["data"]["abuseConfidenceScore"]) < "20":
-        print ( "The IP Address " + sys.argv[1] + " Is Probably Not Malicious But Should Be Investigated Further")
+        print(
+            f"The IP Address {sys.argv[1]} Is Probably Not Malicious But Should Be Investigated Further"
+        )
     elif json.dumps(decodedResponse ["data"]["abuseConfidenceScore"]) <= "20":
-        print ( "The IP Address " + sys.argv[1] + " Is Probably Malicious And Should Be Investigated Further")
+        print(
+            f"The IP Address {sys.argv[1]} Is Probably Malicious And Should Be Investigated Further"
+        )
     else:
         print ( "" )
 

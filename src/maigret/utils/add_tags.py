@@ -22,8 +22,7 @@ def update_tags(site):
         site.disabled = True
 
     print(f'Old alexa rank: {site.alexa_rank}')
-    rank = get_alexa_rank(site.url_main)
-    if rank:
+    if rank := get_alexa_rank(site.url_main):
         print(f'New alexa rank: {rank}')
         site.alexa_rank = rank
 
@@ -37,7 +36,7 @@ if __name__ == '__main__':
                         dest="base_file", default="maigret/resources/data.json",
                         help="JSON file with sites data to update.")
 
-    pool = list()
+    pool = []
 
     args = parser.parse_args()
 
@@ -49,7 +48,7 @@ if __name__ == '__main__':
         if site.engine == 'uCoz':
             continue
 
-        if not 'in' in site.tags:
+        if 'in' not in site.tags:
             continue
 
         update_tags(site)

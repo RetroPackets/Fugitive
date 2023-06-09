@@ -15,7 +15,7 @@ class Bing(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Bing...'%(self.target))
+		test(f'Searching "{self.target}" in Bing...')
 		url = "http://bing.com/search?q=%40{target}".format(
 			target=self.target)
 		try:

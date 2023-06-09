@@ -15,7 +15,7 @@ class Baidu(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Baidu...'%(self.target))
+		test(f'Searching "{self.target}" in Baidu...')
 		url = "http://www.baidu.com/s?wd=%40{target}&pn=0".format(
 			target=self.target)
 		try:

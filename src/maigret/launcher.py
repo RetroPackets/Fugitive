@@ -13,7 +13,7 @@ print(f"""
     """)
 
 usr = input(f"{Fore.WHITE}🅴🅽🆃🅴🆁 🆄🆂🅴🆁🅽🅰🅼🅴 {Fore.YELLOW}⑆ {Fore.BLUE}")
-os.system("python3 maigret.py " + usr)
+os.system(f"python3 maigret.py {usr}")
 
 print(f"""
 

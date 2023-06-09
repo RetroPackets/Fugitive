@@ -14,16 +14,12 @@ except ImportError as e:
 def checkTarget(target):
 	o = urlparse(target)
 	if o.netloc == "":
-		if "www." in o.path: return o.path.split('www.')[1]
-		return o.path
-	elif o.netloc != "":
-		if "www." in o.netloc: return o.netloc.split("www.")[1]
-		return o.netloc
-	else: return target
+		return o.path.split('www.')[1] if "www." in o.path else o.path
+	return o.netloc.split("www.")[1] if "www." in o.netloc else o.netloc
 
 def checkEmail(email):
 	if '@' not in email:
-		exit(warn('Invalid email %s'%email))
+		exit(warn(f'Invalid email {email}'))
 	return email
 
 def checkSource(source):
@@ -31,7 +27,7 @@ def checkSource(source):
 	               'dogpile','exalead','jigsaw','pgp','yahoo'
 	               ]
 	if source not in list_source:
-		exit(warn('Invalid search engine: %s'%source))
+		exit(warn(f'Invalid search engine: {source}'))
 	return source
 
 def checkVerbose(ver):

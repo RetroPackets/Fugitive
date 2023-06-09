@@ -51,7 +51,7 @@ def test_args_search_mode(argparser):
     assert args.username == ['username']
 
     want_args = dict(DEFAULT_ARGS)
-    want_args.update({'username': ['username']})
+    want_args['username'] = ['username']
 
     assert args == Namespace(**want_args)
 
@@ -62,7 +62,7 @@ def test_args_search_mode_several_usernames(argparser):
     assert args.username == ['username1', 'username2']
 
     want_args = dict(DEFAULT_ARGS)
-    want_args.update({'username': ['username1', 'username2']})
+    want_args['username'] = ['username1', 'username2']
 
     assert args == Namespace(**want_args)
 
@@ -70,15 +70,11 @@ def test_args_search_mode_several_usernames(argparser):
 def test_args_self_check_mode(argparser):
     args = argparser.parse_args('--self-check --site GitHub'.split())
 
-    want_args = dict(DEFAULT_ARGS)
-    want_args.update(
-        {
-            'self_check': True,
-            'site_list': ['GitHub'],
-            'username': [],
-        }
-    )
-
+    want_args = dict(DEFAULT_ARGS) | {
+        'self_check': True,
+        'site_list': ['GitHub'],
+        'username': [],
+    }
     assert args == Namespace(**want_args)
 
 
@@ -87,12 +83,8 @@ def test_args_multiple_sites(argparser):
         '--site GitHub VK --site PornHub --site Taringa,Steam'.split()
     )
 
-    want_args = dict(DEFAULT_ARGS)
-    want_args.update(
-        {
-            'site_list': ['GitHub', 'PornHub', 'Taringa,Steam'],
-            'username': ['VK'],
-        }
-    )
-
+    want_args = dict(DEFAULT_ARGS) | {
+        'site_list': ['GitHub', 'PornHub', 'Taringa,Steam'],
+        'username': ['VK'],
+    }
     assert args == Namespace(**want_args)

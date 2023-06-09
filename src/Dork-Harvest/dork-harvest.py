@@ -92,10 +92,9 @@ except KeyboardInterrupt:
 
 
 def logger(data):
-    file = open((l0g) + ".txt", "a")
-    file.write(str(data))
-    file.write("\n")
-    file.close()
+    with open(f"{l0g}.txt", "a") as file:
+        file.write(str(data))
+        file.write("\n")
 
 
 if data.startswith("y" or "Y"):

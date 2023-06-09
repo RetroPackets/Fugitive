@@ -39,18 +39,18 @@ zero(syA)
 if (len(sys.argv) > 1):
    syA1 = sys.argv[1]
    if sys.argv[1].startswith('-'):
-         if syA1 == "--help" or syA1 == '-h':
-            os.system('clear')
-            welcome()
-            help(syA1)
+      if syA1 in ["--help", '-h']:
+         os.system('clear')
+         welcome()
+         help(syA1)
 
-         elif syA1 == '-b' or syA1 == '--banner':
-            os.system('clear')            
-            welcome()
-         elif syA1 == '-c' or syA1 == '--commands':
-            os.system('clear')            
-            welcome()
-            listCommand()
+      elif syA1 in ['-b', '--banner']:
+         os.system('clear')            
+         welcome()
+      elif syA1 in ['-c', '--commands']:
+         os.system('clear')            
+         welcome()
+         listCommand()
 
    elif syA1 == 'localhost':
       ip = myIp()
@@ -67,7 +67,7 @@ if (len(sys.argv) > 1):
       getGeo(syA1)
       check(syA1)
 
-   
+
 
 if (len(sys.argv) > 2):
    syA1 = sys.argv[1]

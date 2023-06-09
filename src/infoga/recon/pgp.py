@@ -15,7 +15,7 @@ class PGP(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in PGP...'%(self.target))
+		test(f'Searching "{self.target}" in PGP...')
 		url = "http://pgp.mit.edu/pks/lookup?search={target}&op=index".format(
 			target=self.target)
 		try:
