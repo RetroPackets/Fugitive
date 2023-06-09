@@ -11,11 +11,16 @@ from lib.colors import *
 from recon.pwned import *
 from recon.shodan import *
 
-def plus(string):print("%s[+]%s %s"%(G%0,E,string))
-def warn(string):print("%s[!]%s %s"%(R%0,E,string))
-def test(string):print("%s[*]%s %s"%(B%0,E,string))
-def info(string):print("%s[i]%s %s"%(Y%0,E,string))
-def more(string):print(" %s|%s  %s"%(W%0,E,string))
+def plus(string):
+	print(f"{G % 0}[+]{E} {string}")
+def warn(string):
+	print(f"{R % 0}[!]{E} {string}")
+def test(string):
+	print(f"{B % 0}[*]{E} {string}")
+def info(string):
+	print(f"{Y % 0}[i]{E} {string}")
+def more(string):
+	print(f" {W % 0}|{E}  {string}")
 
 class PPrint(object):
 	'''PPrint class'''

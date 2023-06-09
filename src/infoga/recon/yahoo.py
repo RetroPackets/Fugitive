@@ -15,7 +15,7 @@ class Yahoo(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Yahoo...'%(self.target))
+		test(f'Searching "{self.target}" in Yahoo...')
 		url = "http://search.yahoo.com/search?p=%40{target}&b=0&pz=10".format(
 			target=self.target)
 		try:

@@ -15,7 +15,7 @@ class Ask(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Ask...'%(self.target))
+		test(f'Searching "{self.target}" in Ask...')
 		url = "http://www.ask.com/web?q=%40{target}&pu=100&page=0".format(
 			target=self.target)
 		try:

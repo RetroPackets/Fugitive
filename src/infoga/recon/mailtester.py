@@ -15,8 +15,7 @@ class MailTester(Request):
 		self.email = email
 
 	def search(self):
-		post_data = {'lang':'en'}
-		post_data['email'] = self.email
+		post_data = {'lang': 'en', 'email': self.email}
 		url = "http://mailtester.com/testmail.php"
 		try:
 			resp = self.send(

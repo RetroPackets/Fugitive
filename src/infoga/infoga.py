@@ -41,18 +41,16 @@ class infoga(object):
 				if email not in self.listEmail:
 					self.listEmail.append(email)
 			if self.verbose in (1,2,3):
-				info('Found %s emails in %s'%(len(emails),
-					module.__class__.__name__))
+				info(f'Found {len(emails)} emails in {module.__class__.__name__}')
 
 	def engine(self,target,engine):
 		engine_list = [ Ask(target),Baidu(target),Bing(target),Dogpile(target),
 						Exalead(target),Google(target),PGP(target),Yahoo(target)
 						]
-		if engine == 'all':
-			for e in engine_list: self.search(e)
-		else:
-			for e in engine_list:
-				if e.__class__.__name__.lower() in engine:self.search(e)
+		for e in engine_list:
+			if engine == 'all':
+				self.search(e)
+			elif e.__class__.__name__.lower() in engine:self.search(e)
 
 	def tester(self,email):
 		return MailTester(email).search()
@@ -73,7 +71,7 @@ class infoga(object):
 			if o in ('-r','--report'):self.report= open(a,'w') if a != '' else None
 			if o in ('-i','--info'):
 				self.listEmail.append(checkEmail(a))
-				plus('Searching for: %s'%a)
+				plus(f'Searching for: {a}')
 			if o in ('-h','--help'):Banner().usage(True)
 		### start ####
 		if self.domain != ('' or None):
@@ -87,9 +85,9 @@ class infoga(object):
 			if self.source == 'pgp':self.engine(self.domain,'pgp')
 			if self.source == 'yahoo':self.engine(self.domain,'yahoo')
 
-		if self.listEmail == [] or self.listEmail == None:
+		if self.listEmail == [] or self.listEmail is None:
 			sys.exit(warn('Not found emails... :(')) 
-		
+
 		for email in self.listEmail:
 			ip = self.tester(email)
 			if ip != ([] or None):
@@ -99,9 +97,10 @@ class infoga(object):
 				if len(ips) >=2:
 					info("Found multiple ip for this email...")
 				PPrint(ips,email,self.verbose,self.breach,self.report).output()
-			else:more('Not found any informations for %s'%(email))
+			else:else
+				more(f'Not found any informations for {email}')
 		if self.report != None:
-			info('File saved in: '+self.report.name)
+			info(f'File saved in: {self.report.name}')
 			self.report.close()
 		# end
 if __name__ == "__main__":

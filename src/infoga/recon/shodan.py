@@ -22,7 +22,6 @@ class Shodan(Request):
 				method = 'GET',
 				url = url
 				)
-			if resp.status_code != 200: return b'{}'
-			return resp.content
+			return b'{}' if resp.status_code != 200 else resp.content
 		except Exception as e:
 			pass

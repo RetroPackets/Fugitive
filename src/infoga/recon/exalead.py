@@ -15,7 +15,7 @@ class Exalead(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Exalead...'%(self.target))
+		test(f'Searching "{self.target}" in Exalead...')
 		url = "http://www.exalead.com/search/web/results/?q=%40{target}&elements_per_page=50&start_index=0".format(
 			target=self.target)
 		try:

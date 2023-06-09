@@ -34,7 +34,7 @@ def banner():
 
 def parser_error(self):
     banner()
-    print("Usage: python " + sys.argv[0] + " [Options] use -h for help")
+    print(f"Usage: python {sys.argv[0]} [Options] use -h for help")
     sys.exit()
 
 
@@ -45,8 +45,7 @@ def parse_args():
     parser.add_argument('-f', '--dorkfile', required=False)
     parser.add_argument('-d', '--dork', required=False)
     parser.add_argument('-o', '--output', required=False)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def input_(dork):
@@ -67,7 +66,7 @@ def urlExtract():
     global final
     urls = helium.find_all(S('.yuRUbf'))
     url = [i.web_element.find_element_by_tag_name('a').get_attribute('href') for i in urls]
-    if (url == []):
+    if not url:
         kill_browser()
         re_enter()
     url = clean(url)
@@ -102,24 +101,22 @@ def flow():
 
 def exechaha(args,dorks):
     global driver
-    if(args.dorkfile):
+    if args.dorkfile:
         with open(dorks) as f:
             while True:
-                line = f.readline()
-                if not line:
+                if not (line := f.readline()):
                     break
-                else:
-                    driver = helium.start_firefox(headless=False)
-                    go_to('https://www.google.com/search?q=site:doxbin.com | site:instagram.com | site:facebook.com | site:youtube.com | site:zerobin.net | site:pastebin.com | site:skidbin.net | site:hastebin.com | site:twitter.com | site:linkedin.com | site:pinterest.com | site:tumblr.com | site:snapchat.com | site:reddit.com | site:github.com | site:gitlab.com | site:pornhub.com | site:whatsapp.com  \ site:tiktok.com "' + test +'"')
-                    input_(line)
-                    time.sleep(5)
-                    flow()
+                driver = helium.start_firefox(headless=False)
+                go_to('https://www.google.com/search?q=site:doxbin.com | site:instagram.com | site:facebook.com | site:youtube.com | site:zerobin.net | site:pastebin.com | site:skidbin.net | site:hastebin.com | site:twitter.com | site:linkedin.com | site:pinterest.com | site:tumblr.com | site:snapchat.com | site:reddit.com | site:github.com | site:gitlab.com | site:pornhub.com | site:whatsapp.com  \ site:tiktok.com "' + test +'"')
+                input_(line)
+                time.sleep(5)
+                flow()
 
     else:
         line = args.dork
         driver = helium.start_firefox(headless=False)
         time.sleep(5)
-        go_to('https://www.google.com/search?q="' + test + '"')
+        go_to(f'https://www.google.com/search?q="{test}"')
         input_(line)
         time.sleep(5)
         flow()
@@ -130,14 +127,13 @@ def main():
     args = parse_args()
     dorks = args.dorkfile
     exechaha(args,dorks)
-    if(args.output):
-        file1 = open(args.output+'.txt', 'w')
-        for i in clean(final):
-            file1.write(i.strip()+'\n')
-        file1.close()
+    if args.output:
+        with open(f'{args.output}.txt', 'w') as file1:
+            for i in clean(final):
+                file1.write(i.strip()+'\n')
     else:
         for i in clean(final):
-            print(f"{Fore.YELLOW}[{Fore.GREEN}ϟ{Fore.YELLOW}] {Fore.BLUE}" + i)
+            print(f"{Fore.YELLOW}[{Fore.GREEN}ϟ{Fore.YELLOW}] {Fore.BLUE}{i}")
 
 if __name__ == '__main__':
     try:

@@ -15,13 +15,13 @@ class Google(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in Google...'%(self.target))
+		test(f'Searching "{self.target}" in Google...')
 		base_url = 'https://www.google.com/search?q=intext:%22%40{target}%22&num=50'.format(
 			target=self.target)
 		mails = []
 		# First 350 results (page 0 to 6)
 		for page in range(0, 7):
-			url = base_url + "&start=" + str(page)
+			url = f"{base_url}&start={str(page)}"
 			try:
 				resp = self.send(
 					method = 'GET',

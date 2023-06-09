@@ -23,8 +23,6 @@ class Pwned(Request):
 				method = 'GET',
 				url = url
 				)
-			if resp.status_code == 200:
-				return loads(resp.content)
-			return None
+			return loads(resp.content) if resp.status_code == 200 else None
 		except Exception as e:
 			pass

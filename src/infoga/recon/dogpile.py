@@ -15,7 +15,7 @@ class Dogpile(Request):
 		self.target = target
 
 	def search(self):
-		test('Searching "%s" in DogPile...'%(self.target))
+		test(f'Searching "{self.target}" in DogPile...')
 		url = "http://www.dogpile.com/search/web?qsi=0&q=%40{target}".format(
 			target=self.target)
 		try:
